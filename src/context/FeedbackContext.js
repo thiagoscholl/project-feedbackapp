@@ -27,14 +27,6 @@ export const FeedbackProvider = ({ children }) => {
     edit: false,
   });
 
-  //  Seleciona o item para ser modificado
-  const editFeedback = (item) => {
-    setFeedbackEdit({
-      item,
-      edit: true,
-    });
-  };
-
   //  Deletar Feedback
   const deleteFeedback = (id) => {
     if (window.confirm('Are you sure you want to delete?')) {
@@ -48,13 +40,27 @@ export const FeedbackProvider = ({ children }) => {
     setFeedback([newFeedback, ...feedback]);
   };
 
+  //  Seleciona o item para ser modificado
+  const editFeedback = (item) => {
+    setFeedbackEdit({
+      item,
+      edit: true,
+    });
+  };
+
   return (
     <FeedbackContext.Provider
       value={{
+        //  data state
         feedback,
+        //  delete feedback function
         deleteFeedback,
+        //  add feedback function
         addFeedback,
+        //  editfeedback function
         editFeedback,
+        //  feedbackedit state
+        feedbackEdit,
       }}
     >
       {children}
